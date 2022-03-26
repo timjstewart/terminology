@@ -31,7 +31,7 @@
         ("htop"    . ((commands . "htop")
                       (insert-mode . nil)))
         ("bastion" . ((commands . "ssh bastion")
-                      (insert-mode . t))))
+                      (insert-mode . t)))))
 
 (defun terminology--switch-to-terminal (buffer-name)
   "Switches to a terminal buffer named *buffer-name*"
@@ -83,10 +83,10 @@ vterm buffer."
                       (action . (("Switch to Terminal" . terminology--switch-to-terminal)
                                  ("Rename Terminal Buffer" . terminology--vterm-rename)
                                  ("Kill Terminal" . terminology--vterm-kill)))))
-         (create '((name . "Create Terminal:")
-                   (candidates . terminology-vterm-profile-names)
-                   (filtered-candidate-transformer . terminology--helm-candidate-transformer)
-                   (action . (("Create Terminal" . terminology--create-terminal))))))
+         (create    '((name . "Create Terminal:")
+                      (candidates . terminology-vterm-profile-names)
+                      (filtered-candidate-transformer . terminology--helm-candidate-transformer)
+                      (action . (("Create Terminal" . terminology--create-terminal))))))
     (helm :prompt "Vterm Buffer Name: "
           :sources '(switch-to create))))
 
