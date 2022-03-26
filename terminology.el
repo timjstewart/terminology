@@ -31,9 +31,7 @@
         ("htop"   . ((commands . "htop")
                      (insert-mode . nil)))
         ("bastion"   . ((commands . "ssh bastion")
-                        (insert-mode . t)))
-        ("flowshare" . ((commands . "ssh flowshare")
-                        (insert-mode . t)))))
+                        (insert-mode . t))))
 
 (defun terminology--switch-to-terminal (buffer-name)
   "Switches to a terminal buffer named *buffer-name*"
