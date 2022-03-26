@@ -26,12 +26,12 @@
 
 ;; TODO: Make this customize-able (e.g. defgroup/defcustom).
 (setq terminology--terminal-alist
-      '(("sbt"       . ((commands . "[ -e sbt.sh ] && ./sbt.sh")
-                        (insert-mode . t)))
-        ("htop"   . ((commands . "htop")
-                     (insert-mode . nil)))
-        ("bastion"   . ((commands . "ssh bastion")
-                        (insert-mode . t))))
+      '(("sbt"     . ((commands . "[ -e sbt.sh ] && ./sbt.sh")
+                      (insert-mode . t)))
+        ("htop"    . ((commands . "htop")
+                      (insert-mode . nil)))
+        ("bastion" . ((commands . "ssh bastion")
+                      (insert-mode . t))))
 
 (defun terminology--switch-to-terminal (buffer-name)
   "Switches to a terminal buffer named *buffer-name*"
