@@ -87,7 +87,7 @@ vterm buffer."
                       (candidates . terminology-vterm-profile-names)
                       (filtered-candidate-transformer . terminology--helm-candidate-transformer)
                       (action . (("Create Terminal" . terminology--create-terminal))))))
-    (helm :prompt "Vterm Buffer Name: "
+    (helm :prompt "Terminal: "
           :sources '(switch-to create))))
 
 (spacemacs/set-leader-keys "b t" 'terminology-helm-terminals)
