@@ -90,6 +90,6 @@ vterm buffer."
     (helm :prompt "Terminal: "
           :sources '(switch-to create))))
 
-(spacemacs/set-leader-keys "b t" 'terminology-helm-terminals)
+(spacemacs/set-leader-keys "'" 'terminology-helm-terminals)
 
 (provide 'terminology)
