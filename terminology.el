@@ -7,13 +7,13 @@
 
 (defun terminology--terminal-buffer-p (buffer)
   "Returns true if and only if *buffer* is a buffer."
-  (assert (bufferp buffer))
+  (cl-assert (bufferp buffer))
   (equal "vterm-mode"
          (symbol-name (buffer-local-value 'major-mode buffer))))
 
 (defun terminology--terminal-buffer-name-p (buffer-name)
   "Returns true if and only if *buffer-name* is the name of a terminal buffer."
-  (assert (stringp buffer-name))
+  (cl-assert (stringp buffer-name))
   (let ((buf (get-buffer buffer-name)))
     (if buf
         (terminology--terminal-buffer-p buf)
@@ -35,14 +35,14 @@
 
 (defun terminology--switch-to-terminal (buffer-name)
   "Switches to a terminal buffer named *buffer-name*"
-  (assert (stringp buffer-name))
+  (cl-assert (stringp buffer-name))
   (if (terminology--terminal-buffer-name-p buffer-name)
       (pop-to-buffer (get-buffer buffer-name))
     (error "%s is not a terminal buffer.")))
 
 (defun terminology--create-terminal (buffer-name)
   "Creates a new vterm buffer with the provided *buffer-name*."
-  (assert (stringp buffer-name))
+  (cl-assert (stringp buffer-name))
   (vterm buffer-name)
   ;; TODO: Customize whether or not insert mode should be entered.
   (evil-insert-state)
@@ -64,11 +64,11 @@ entered text."
   (mapcar 'car terminology--terminal-alist))
 
 (defun terminology--vterm-kill (buffer-name)
-  (assert (stringp buffer-name))
+  (cl-assert (stringp buffer-name))
   (kill-buffer-ask (get-buffer buffer-name)))
 
 (defun terminology--vterm-rename (buffer-name)
-  (assert (stringp buffer-name))
+  (cl-assert (stringp buffer-name))
   (let ((new-name (read-string "Enter new name: " buffer-name)))
     (when new-name
       (with-current-buffer buffer-name
@@ -89,7 +89,5 @@ vterm buffer."
                       (action . (("Create Terminal" . terminology--create-terminal))))))
     (helm :prompt "Terminal: "
           :sources '(switch-to create))))
-
-(spacemacs/set-leader-keys "b t" 'terminology-helm-terminals)
 
 (provide 'terminology)
